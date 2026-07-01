@@ -1,0 +1,258 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Flipkart MERN API",
+    "version": "1.0.0",
+    "description": "Complete API documentation for Flipkart MERN with Admin & User roles"
+  },
+  "host": "localhost:4000",
+  "basePath": "/api/v1",
+  "schemes": ["http", "https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "securityDefinitions": {
+    "bearerAuth": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "JWT token for authentication"
+    }
+  },
+  "tags": [
+    {
+      "name": "Users",
+      "description": "User authentication and profile management"
+    },
+    {
+      "name": "Products",
+      "description": "Product listing and details"
+    },
+    {
+      "name": "Admin - Products",
+      "description": "Admin product management"
+    },
+    {
+      "name": "Orders",
+      "description": "Order management"
+    },
+    {
+      "name": "Admin - Orders",
+      "description": "Admin order management"
+    }
+  ],
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Register a new user",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": ["name", "email", "password", "gender"],
+              "properties": {
+                "name": { "type": "string", "example": "John Doe" },
+                "email": { "type": "string", "example": "john@example.com" },
+                "password": { "type": "string", "example": "password123" },
+                "gender": { "type": "string", "enum": ["male", "female", "other"] }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "User registered successfully"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Login user",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": ["email", "password"],
+              "properties": {
+                "email": { "type": "string" },
+                "password": { "type": "string" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User logged in successfully"
+          }
+        }
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Logout user",
+        "responses": {
+          "200": {
+            "description": "User logged out successfully"
+          }
+        }
+      }
+    },
+    "/me": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get current user details",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "User details"
+          }
+        }
+      }
+    },
+    "/admin/users": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get all users (Admin only)",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "List of all users"
+          }
+        }
+      }
+    },
+    "/products": {
+      "get": {
+        "tags": ["Products"],
+        "summary": "Get all products",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "example": 1
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "integer",
+            "example": 12
+          },
+          {
+            "in": "query",
+            "name": "category",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of products"
+          }
+        }
+      }
+    },
+    "/products/{id}": {
+      "get": {
+        "tags": ["Products"],
+        "summary": "Get single product",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product details"
+          }
+        }
+      }
+    },
+    "/admin/products": {
+      "post": {
+        "tags": ["Admin - Products"],
+        "summary": "Create new product",
+        "security": [{ "bearerAuth": [] }],
+        "consumes": ["multipart/form-data"],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "description",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "price",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "in": "formData",
+            "name": "originalPrice",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "in": "formData",
+            "name": "category",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "brand",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "stock",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "formData",
+            "name": "images",
+            "type": "file",
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Product created successfully"
+          }
+        }
+      }
+    },
+    "/my-orders": {
+      "get": {
+        "tags": ["Orders"],
+        "summary": "Get my orders",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "List of user orders"
+          }
+        }
+      }
+    }
+  }
+}
