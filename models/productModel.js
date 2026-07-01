@@ -36,7 +36,10 @@ const productSchema = new mongoose.Schema({
     category: {
         type: String,
         required: [true, 'Please enter product category'],
-        enum: ['Electronics', 'Fashion', 'Home', 'Sports', 'Books', 'Toys', 'Beauty', 'Other']
+        enum: {
+            values: ['Men', 'Women', 'Clothing'],
+            message: 'Category must be Men, Women, or Clothing'
+        }
     },
     brand: {
         type: String,

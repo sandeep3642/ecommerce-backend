@@ -63,112 +63,111 @@ const seedData = async () => {
         // Create sample products
         const sampleProducts = [
             {
-                name: 'iPhone 15 Pro',
-                description: 'Latest Apple iPhone with advanced camera system',
-                price: 99999,
-                originalPrice: 129999,
-                category: 'Electronics',
-                brand: 'Apple',
+                name: 'Men Cotton Shirt',
+                description: 'Comfortable cotton shirt for daily wear',
+                price: 1499,
+                originalPrice: 1999,
+                category: 'Men',
+                brand: 'StyleHub',
                 stock: 50,
-                warranty: 12,
-                highlights: ['5G', '48MP Camera', 'A18 Pro Chip', 'Titanium Design'],
-                specifications: [
-                    { key: 'Display', value: '6.7 inch OLED' },
-                    { key: 'RAM', value: '8GB' },
-                    { key: 'Storage', value: '256GB' }
-                ],
-                images: [
-                    {
-                        filename: 'iphone-1.jpg',
-                        url: '/images/products/iphone-1.jpg'
-                    }
-                ],
-                createdBy: adminUser._id
-            },
-            {
-                name: 'Samsung 55 inch 4K TV',
-                description: 'Ultra HD Smart TV with Crystal Processor',
-                price: 49999,
-                originalPrice: 79999,
-                category: 'Electronics',
-                brand: 'Samsung',
-                stock: 20,
-                warranty: 24,
-                highlights: ['4K Resolution', 'Smart TV', 'HDR Support'],
-                specifications: [
-                    { key: 'Resolution', value: '4K (3840 x 2160)' },
-                    { key: 'Panel Type', value: 'VA' }
-                ],
-                images: [
-                    {
-                        filename: 'samsung-tv.jpg',
-                        url: '/images/products/samsung-tv.jpg'
-                    }
-                ],
-                createdBy: adminUser._id
-            },
-            {
-                name: 'Nike Running Shoes',
-                description: 'Professional grade running shoes for athletes',
-                price: 5999,
-                originalPrice: 8999,
-                category: 'Fashion',
-                brand: 'Nike',
-                stock: 100,
                 warranty: 0,
-                highlights: ['Lightweight', 'Breathable', 'Durable'],
+                highlights: ['Soft Cotton', 'Regular Fit', 'Breathable'],
                 specifications: [
-                    { key: 'Material', value: 'Mesh + Synthetic' },
-                    { key: 'Weight', value: '250g per shoe' }
+                    { key: 'Fabric', value: '100% Cotton' },
+                    { key: 'Fit', value: 'Regular' }
                 ],
                 images: [
                     {
-                        filename: 'nike-shoes.jpg',
-                        url: '/images/products/nike-shoes.jpg'
+                        filename: 'men-shirt.jpg',
+                        url: '/images/products/men-shirt.jpg'
                     }
                 ],
                 createdBy: adminUser._id
             },
             {
-                name: 'Sony Wireless Headphones',
-                description: 'Noise canceling wireless headphones with 30hrs battery',
-                price: 19999,
-                originalPrice: 34999,
-                category: 'Electronics',
-                brand: 'Sony',
-                stock: 75,
-                warranty: 12,
-                highlights: ['Active Noise Cancellation', '30hr Battery', 'Bluetooth 5.3'],
+                name: 'Women Summer Dress',
+                description: 'Elegant summer dress for casual outings',
+                price: 2499,
+                originalPrice: 3499,
+                category: 'Women',
+                brand: 'TrendWear',
+                stock: 40,
+                warranty: 0,
+                highlights: ['Lightweight', 'Breathable', 'Stylish'],
                 specifications: [
-                    { key: 'Connectivity', value: 'Bluetooth 5.3' },
-                    { key: 'Battery Life', value: '30 hours' }
+                    { key: 'Fabric', value: 'Rayon' },
+                    { key: 'Pattern', value: 'Floral' }
                 ],
                 images: [
                     {
-                        filename: 'sony-headphones.jpg',
-                        url: '/images/products/sony-headphones.jpg'
+                        filename: 'women-dress.jpg',
+                        url: '/images/products/women-dress.jpg'
                     }
                 ],
                 createdBy: adminUser._id
             },
             {
-                name: 'Wooden Office Chair',
-                description: 'Ergonomic wooden office chair with lumbar support',
-                price: 12999,
-                originalPrice: 18999,
-                category: 'Home',
-                brand: 'FurnitureCo',
-                stock: 30,
-                warranty: 5,
-                highlights: ['Ergonomic Design', 'Wood Material', 'Comfortable'],
+                name: 'Classic Denim Jacket',
+                description: 'Stylish denim jacket for everyday fashion',
+                price: 2999,
+                originalPrice: 3999,
+                category: 'Clothing',
+                brand: 'DenimCo',
+                stock: 60,
+                warranty: 0,
+                highlights: ['Classic Design', 'Durable', 'Versatile'],
                 specifications: [
-                    { key: 'Material', value: 'Engineered Wood' },
-                    { key: 'Height Range', value: '44-48 inches' }
+                    { key: 'Fabric', value: 'Denim' },
+                    { key: 'Style', value: 'Casual' }
                 ],
                 images: [
                     {
-                        filename: 'office-chair.jpg',
-                        url: '/images/products/office-chair.jpg'
+                        filename: 'denim-jacket.jpg',
+                        url: '/images/products/denim-jacket.jpg'
+                    }
+                ],
+                createdBy: adminUser._id
+            },
+            {
+                name: 'Men Formal Trousers',
+                description: 'Smart formal trousers for office and events',
+                price: 1999,
+                originalPrice: 2799,
+                category: 'Men',
+                brand: 'SmartStyle',
+                stock: 35,
+                warranty: 0,
+                highlights: ['Polished Look', 'Comfort Fit', 'Wrinkle Resistant'],
+                specifications: [
+                    { key: 'Fabric', value: 'Polyester Blend' },
+                    { key: 'Fit', value: 'Slim' }
+                ],
+                images: [
+                    {
+                        filename: 'men-trousers.jpg',
+                        url: '/images/products/men-trousers.jpg'
+                    }
+                ],
+                createdBy: adminUser._id
+            },
+            {
+                name: 'Women Knit Top',
+                description: 'Soft knit top perfect for casual and office wear',
+                price: 1599,
+                originalPrice: 2299,
+                category: 'Women',
+                brand: 'ChicWear',
+                stock: 45,
+                warranty: 0,
+                highlights: ['Soft Knit', 'Comfortable', 'Easy Pairing'],
+                specifications: [
+                    { key: 'Fabric', value: 'Knit' },
+                    { key: 'Sleeve', value: 'Half Sleeve' }
+                ],
+                images: [
+                    {
+                        filename: 'women-top.jpg',
+                        url: '/images/products/women-top.jpg'
                     }
                 ],
                 createdBy: adminUser._id
