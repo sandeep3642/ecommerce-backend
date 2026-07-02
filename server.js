@@ -10,13 +10,25 @@ const swaggerDoc = require('./swagger/swagger.json');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
+const FRONTEND_URL = process.env.FRONTEND_URL || '';
+const SWAGGER_HOST = process.env.SWAGGER_HOST || '';
 
 // Connect to Database
 connectDatabase();
 
 // Middlewares
 app.use(cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+    origin: (origin, callback) => {
+        if (!origin) {
+            return callback(null, true);
+        }
+
+        if (!FRONTEND_URL || origin === FRONTEND_URL) {
+            return callback(null, true);
+        }
+
+        return callback(new Error('CORS policy does not allow access from this origin.'));
+    },
     credentials: true
 }));
 app.use(express.json({ limit: '50mb' }));
@@ -25,6 +37,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Swagger Documentation
+if (SWAGGER_HOST) {
+    swaggerDoc.host = SWAGGER_HOST;
+} else {
+    delete swaggerDoc.host;
+}
+
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc, {
     customCss: '.swagger-ui .topbar { display: none }'
 }));
